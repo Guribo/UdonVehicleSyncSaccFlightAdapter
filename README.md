@@ -1,5 +1,12 @@
 # Udon Vehicle Sync - Sacc Flight Adapter
 
+## Installation
+
+1. Install Saccflight: https://github.com/Sacchan-VRC/SaccFlightAndVehicles/releases/tag/1.64
+2. Install VRChat World SDK 3.6
+3. Install CyanPlayerObjectPool: https://cyanlaser.github.io/CyanPlayerObjectPool/
+4. Install TLP UdonVehicleSync SaccFlightAdapter: https://guribo.github.io/TLP/
+
 ## Usage
 
 1. Add `TLP_Essentials` prefab to your scene
