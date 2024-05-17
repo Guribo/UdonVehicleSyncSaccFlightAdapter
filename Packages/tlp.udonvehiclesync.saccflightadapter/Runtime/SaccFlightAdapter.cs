@@ -2,6 +2,7 @@
 using SaccFlightAndVehicles;
 using TLP.UdonUtils;
 using TLP.UdonUtils.Common;
+using TLP.UdonUtils.Events;
 using TLP.UdonUtils.Extensions;
 using TLP.UdonUtils.Physics;
 using TLP.UdonUtils.Sources.Time;
@@ -28,6 +29,7 @@ public class SaccFlightAdapter : TlpBaseBehaviour
 
     public PositionSendController PositionSendController;
     public RigidbodyVelocityProvider RigidbodyVelocityProvider;
+    public UdonEvent OnRespawnEvent;
 
     [Tooltip(
             "Typically this is a GameObject sitting in the scene origin at (0,0,0) with no rotation. Used to have an object sync in another objects local space (experimental). If not set this script will attempt to find a GameObject called 'TLP_SyncOrigin' as fallback.")]
@@ -45,8 +47,9 @@ public class SaccFlightAdapter : TlpBaseBehaviour
 #endif
         #endregion
 
+        if (SaccEntity.Occupied) return;
 
-        if (!OwnershipTransfer.TransferOwnership(gameObject, Networking.LocalPlayer, true)) {
+        if (!OwnershipTransfer.TransferOwnership(Receiver.gameObject, Networking.LocalPlayer, true)) {
             Warn($"Failed to take ownership of {nameof(Receiver)} hierarchy");
             return;
         }
@@ -61,6 +64,7 @@ public class SaccFlightAdapter : TlpBaseBehaviour
 #endif
         #endregion
 
+        if (SaccEntity.Occupied) return;
 
         Respawn();
     }
@@ -94,6 +98,20 @@ public class SaccFlightAdapter : TlpBaseBehaviour
     #region Hook Implementations
     protected override bool SetupAndValidate() {
         if (!base.SetupAndValidate()) {
+            return false;
+        }
+
+        if (!Utilities.IsValid(OnRespawnEvent)) {
+            Error($"{nameof(OnRespawnEvent)} is not set");
+            return false;
+        }
+
+        if (OnRespawnEvent.ListenerMethod != "OnRespawn") {
+            Error($"{nameof(OnRespawnEvent)}.{nameof(OnRespawnEvent.ListenerMethod)} is not set to 'OnRespawn'");
+            return false;
+        }
+
+        if (!OnRespawnEvent.AddListenerVerified(this, nameof(OnRespawn))) {
             return false;
         }
 
@@ -142,6 +160,17 @@ public class SaccFlightAdapter : TlpBaseBehaviour
         RigidbodyVelocityProvider.RelativeTo = SyncOrigin;
 
         return true;
+    }
+
+    public override void OnEvent(string eventName) {
+        switch (eventName) {
+            case nameof(OnRespawn):
+                OnRespawn();
+                break;
+            default:
+                base.OnEvent(eventName);
+                break;
+        }
     }
     #endregion
 
@@ -212,11 +241,26 @@ public class SaccFlightAdapter : TlpBaseBehaviour
             return;
         }
 
+        Receiver.Respawn(false);
         if (!Receiver.TeleportTo(
-                    SaccEntity.transform.parent.TransformPoint(SaccEntity.Spawnposition),
-                    SaccEntity.transform.parent.rotation)) {
+                    SaccEntity.transform.parent.TransformPoint(SaccEntity.Spawnposition + Vector3.up * 0.05f),
+                    SaccEntity.transform.parent.rotation * SaccEntity.Spawnrotation)) {
             Warn($"Failed respawn {nameof(Receiver)}");
         }
+        SaccEntity.EntityRespawn();
+    }
+
+    /// <summary>
+    /// Callback from PredictingSync when it e.g. falls below the min height
+    /// </summary>
+    private void OnRespawn() {
+        #region TLP_DEBUG
+#if TLP_DEBUG
+        DebugLog(nameof(OnRespawn));
+#endif
+        #endregion
+
+        SaccEntity._dead = true;
     }
     #endregion
 }

@@ -55,6 +55,12 @@ The used pattern MAJOR.MINOR.PATCH indicates:
 
 All notable changes to this project will be documented in this file.
 
+### [1.1.0] - 2024-05-17
+
+#### 🚀 Features
+
+- *(SaccFlightAdapter)* Fix spawn orientation if vehicle was rotated inside its prefab, attempt to improve respawn behaviour, support UVS 2.1.0, fix missing ground material in demo scene
+
 ### [1.0.1] - 2024-05-17
 
 #### 📚 Documentation
