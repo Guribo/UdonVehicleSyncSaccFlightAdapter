@@ -1,7 +1,7 @@
 {
   "name": "tlp.udonvehiclesync.saccfligthadapter",
   "displayName": "TLP UdonVehicleSync SaccFlightAdapter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy to use/setup adapter to replace the original Sync in SaccFlight",
   "gitDependencies": {},
   "legacyFolders": {},

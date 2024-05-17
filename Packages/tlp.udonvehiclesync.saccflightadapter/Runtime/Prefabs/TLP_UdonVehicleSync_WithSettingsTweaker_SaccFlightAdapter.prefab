@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 5548958790749268031, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
         type: 3}
       propertyPath: m_Name
-      value: TLP_UdonVehicleSync_WithSettingsTweaker_SaccFlightAdapter Variant
+      value: TLP_UdonVehicleSync_WithSettingsTweaker_SaccFlightAdapter
       objectReference: {fileID: 0}
     - target: {fileID: 5936287540517491953, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
         type: 3}
@@ -195,6 +195,11 @@ PrefabInstance:
     - target: {fileID: 6962424452297756992, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834689800530168352, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
+        type: 3}
+      propertyPath: DebugTrailsEnabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7834689800530168352, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
@@ -215,10 +220,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8491758079480235776, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
         type: 3}
+      propertyPath: MaxSendInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491758079480235776, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
+        type: 3}
+      propertyPath: PositionThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491758079480235776, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
+        type: 3}
+      propertyPath: RotationThreshold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491758079480235776, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 8491758079480235776, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
         type: 3}
+    - target: {fileID: 8491758079480235776, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
+        type: 3}
+      propertyPath: VelocityDirectionThreshold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194332482171141020, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
+        type: 3}
+      propertyPath: ShowDebugTrails
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9194332482171141020, guid: 24e451e8c7fa43e4ea716f8a6d8b3769,
         type: 3}
       propertyPath: serializationData.Prefab

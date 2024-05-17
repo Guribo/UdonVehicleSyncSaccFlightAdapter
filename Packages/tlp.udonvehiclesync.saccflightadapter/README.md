@@ -1,4 +1,4 @@
-# Udon Vehicle Synchronization
+# Udon Vehicle Synchronization - SaccFlightAndVehicles Adapter
 
 [![Total downloads](https://img.shields.io/github/downloads/Guribo/UdonVehicleSyncSaccFlightAdapter/total?style=flat-square&logo=appveyor)](https://github.com/Guribo/UdonVehicleSyncSaccFlightAdapter/releases)
 
@@ -8,20 +8,28 @@ See [UdonVehicleSync](https://github.com/Guribo/UdonVehicleSync) for details.
 
 ## Installation
 
-1. Install Saccflight: https://github.com/Sacchan-VRC/SaccFlightAndVehicles/releases/tag/1.64
-2. Install VRChat World SDK 3.6
-3. Install CyanPlayerObjectPool: https://cyanlaser.github.io/CyanPlayerObjectPool/
-4. Install TLP UdonVehicleSync SaccFlightAdapter: https://guribo.github.io/TLP/
+**For simplicity reasons please install only via VRChat Creator companion and not manually using Unity packages! You will be missing dependencies when going the Unity package way!**
+
+1. Import SaccFlightAndVehicles UnityPackage: https://github.com/Sacchan-VRC/SaccFlightAndVehicles/releases/tag/1.64
+2. Import VRChat World SDK 3.6 VCC package into your project
+3. Add CyanPlayerObjectPool package listing to VCC: https://cyanlaser.github.io/CyanPlayerObjectPool/
+4. Add TLP Package listing to VCC: https://guribo.github.io/TLP/
+5. Import TLP UdonVehicleSync SaccFlightAdapter into your project
+   1. *This will now automatically import all other needed packages for you:*
+      - *TLP UdonUtils*
+      - *CyanPlayerObjectPool*
 
 ## Setup
 
 ![Setup](.Readme/UVS_Setup.gif)
 
+*Note: All prefabs are in the `Packages` folder so make sure that you select either `All` or `Packages` when searching for them.*
+
 1. Add `TLP_Essentials` prefab to your scene
 2. Add `TLP_SyncOrigin` prefab to your scene and verify it is not rotated and at position 0,0,0
 3. Add any vehicle prefab to your scene
-4. Drag and drop the `TLP_UdonVehicleSync_with_SettingsTweaker` onto the vehicle prefab.
-5. Open the prefab and adjust the position of the `SettingsTweaker` menu to be easily usable (disable gameobject if not needed).
+4. Drag and drop the `TLP_UdonVehicleSync_with_SettingsTweaker_SaccFlightAdapter` onto the vehicle prefab.
+5. Open the prefab and adjust the position of the `SettingsTweaker` menu to be easily usable (disable GameObject if not needed).
 6. Enter play mode with client sim enabled and verify that there is no related errors on the console.
 7. Upload or test with multiple clients to see it in action.
 
@@ -46,6 +54,17 @@ The used pattern MAJOR.MINOR.PATCH indicates:
 ## Changelog
 
 All notable changes to this project will be documented in this file.
+
+### [1.0.1] - 2024-05-17
+
+#### 📚 Documentation
+
+- *(Readme)* Be a bit more descriptive in installation instructions
+
+#### ⚙️ Miscellaneous Tasks
+
+- Fix typo
+- *(Prefab)* Disable debug trails by default, make dynamic send rate stricter to be more likely to send updates when moving slowly
 
 ### [1.0.0] - 2024-05-16
 
