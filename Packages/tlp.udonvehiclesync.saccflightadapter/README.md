@@ -8,16 +8,10 @@ See [UdonVehicleSync](https://github.com/Guribo/UdonVehicleSync) for details.
 
 ## Installation
 
-**For simplicity reasons please install only via VRChat Creator companion and not manually using Unity packages! You will be missing dependencies when going the Unity package way!**
-
 1. Import SaccFlightAndVehicles UnityPackage: https://github.com/Sacchan-VRC/SaccFlightAndVehicles/releases/tag/1.64
-2. Import VRChat World SDK 3.6 VCC package into your project
-3. Add CyanPlayerObjectPool package listing to VCC: https://cyanlaser.github.io/CyanPlayerObjectPool/
-4. Add TLP Package listing to VCC: https://guribo.github.io/TLP/
-5. Import TLP UdonVehicleSync SaccFlightAdapter into your project
-   1. *This will now automatically import all other needed packages for you:*
-      - *TLP UdonUtils*
-      - *CyanPlayerObjectPool*
+2. Install/Add VRChat World SDK 3.7 to your project
+3. Install/Add CyanPlayerObjectPool to your project: https://cyanlaser.github.io/CyanPlayerObjectPool/
+4. Install/Add TLP UdonVehicleSync SaccFlightAdapter to your project: https://guribo.github.io/TLP/
 
 ## Setup
 
@@ -54,6 +48,12 @@ The used pattern MAJOR.MINOR.PATCH indicates:
 ## Changelog
 
 All notable changes to this project will be documented in this file.
+
+### [1.2.0] - 2024-09-14
+
+#### 🚀 Features
+
+- Update to UdonVehicleSync 2.2
 
 ### [1.1.1] - 2024-06-03
 
