@@ -49,6 +49,12 @@ The used pattern MAJOR.MINOR.PATCH indicates:
 
 All notable changes to this project will be documented in this file.
 
+### [1.3.0] - 2025-01-12
+
+#### 🚀 Features
+
+- Migrate to UdonUtils 11.3.0 and UdonVehicleSync 2.3.0
+
 ### [1.2.0] - 2024-09-14
 
 #### 🚀 Features

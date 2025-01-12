@@ -12,14 +12,18 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 
-[DefaultExecutionOrder(ExecutionOrder)]
 [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+[DefaultExecutionOrder(ExecutionOrder)]
+[TlpDefaultExecutionOrder(typeof(SaccFlightAdapter), ExecutionOrder)]
 public class SaccFlightAdapter : TlpBaseBehaviour
 {
-    protected override int ExecutionOrderReadOnly => ExecutionOrder;
+    #region ExecutionOrder
+    public override int ExecutionOrderReadOnly => ExecutionOrder;
 
     [PublicAPI]
-    public new const int ExecutionOrder = TlpExecutionOrder.Min; // ensure it starts before the SaccEntity
+    // ensure it starts before the SaccEntity
+    public new const int ExecutionOrder = RealTimeAtFrameStart.ExecutionOrder + 1;
+    #endregion
 
     private Transform _target;
 
@@ -120,7 +124,6 @@ public class SaccFlightAdapter : TlpBaseBehaviour
             return false;
         }
 
-
         if (!Utilities.IsValid(Receiver)) {
             Error($"{nameof(Receiver)} is not set");
             return false;
@@ -154,7 +157,6 @@ public class SaccFlightAdapter : TlpBaseBehaviour
             return false;
         }
 
-        Receiver.NetworkTime = TlpNetworkTime.GetInstance();
         Receiver.Target = SaccEntity.transform;
         PositionSendController.NetworkTime = TlpNetworkTime.GetInstance();
         RigidbodyVelocityProvider.RelativeTo = SyncOrigin;
@@ -247,6 +249,7 @@ public class SaccFlightAdapter : TlpBaseBehaviour
                     SaccEntity.transform.parent.rotation * SaccEntity.Spawnrotation)) {
             Warn($"Failed respawn {nameof(Receiver)}");
         }
+
         SaccEntity.EntityRespawn();
     }
 

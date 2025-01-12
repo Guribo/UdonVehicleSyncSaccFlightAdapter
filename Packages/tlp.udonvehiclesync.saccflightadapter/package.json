@@ -1,7 +1,7 @@
 {
   "name": "tlp.udonvehiclesync.saccfligthadapter",
   "displayName": "TLP UdonVehicleSync SaccFlightAdapter",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Easy to use/setup adapter to replace the original Sync in SaccFlight",
   "gitDependencies": {},
   "legacyFolders": {},
@@ -10,7 +10,7 @@
     "url": "https://github.com/Guribo"
   },
   "vpmDependencies": {
-    "tlp.udonvehiclesync": "2.2.x"
+    "tlp.udonvehiclesync": "^2.3.0"
   },
   "unity": "2022.3"
 }
